@@ -5,7 +5,7 @@ class Weapon_type(models.Model):
     Модель для хранения типов оружия.
     """
     weapon_type_name = models.CharField(
-        max_lenght = 50,
+        max_length = 50,
         verbose_name = "Тип оружия")#Название строчки
     def __str__(self):
         """
@@ -23,7 +23,7 @@ class Dop_stat_type(models.Model):
     Модель для типов доп. статов
     """
     dop_stat_name = models.CharField(
-        max_lenght = 50,
+        max_length = 50,
         verbose_name = "Дополнительная характеристика")
     def __str__(self):
         """
@@ -41,7 +41,7 @@ class Element(models.Model):
     Модель для хранения элементов.
     """
     element_name = models.CharField(
-        max_lenght = 50,
+        max_length = 50,
         verbose_name = "Элемент")
     def __str__(self):
         """
@@ -66,7 +66,7 @@ class Сharacter(models.Model):
         null = True
     )    
     name = models.CharField(
-        max_lenght = 100,
+        max_length = 100,
         verbose_name = "Имя персонажа")
     type_weapon = models.ForeignKey(
         Weapon_type, 
@@ -85,7 +85,7 @@ class Сharacter(models.Model):
     mastery_elements = models.IntegerField(
         verbose_name = "Мастерство стихий")
     description = models.CharField(
-        max_lenght = 1000,
+        max_length = 1000,
         blank = True,
         verbose_name = "Описание персонажа")
     def __str__(self):
@@ -109,7 +109,7 @@ class Weapon(models.Model):
         blank=True, 
         null = True)
     name = models.CharField(
-        max_lenght = 100,
+        max_length = 100,
         verbose_name = "Название оружия")
     type_weapon = models.ForeignKey(
         Weapon_type, 
@@ -119,11 +119,13 @@ class Weapon(models.Model):
         Dop_stat_type, 
         on_delete = models.CASCADE,
         verbose_name = "Дополнительная характеристика")
-    dop_stat = models.IntegerField(
+    dop_stat = models.DecimalField(
+        decimal_places = 2,
+        max_digits = 4,
         verbose_name = "Значение дополнительной характеристики"
     )
     description = models.CharField(
-        max_lenght = 1000,
+        max_length = 1000,
         blank = True,
         verbose_name = "Описание оружия")
     def __str__(self):
@@ -135,7 +137,7 @@ class Weapon(models.Model):
     class Meta:
         # Метаданные модели для админки и сортировки
         verbose_name = "Оружие"  # Название в единственном числе
-        verbose_name_plural = "Оружии"  # Название во множественном числе 
+        verbose_name_plural = "Оружия"  # Название во множественном числе 
 
 class Artifacts(models.Model):
     """
@@ -147,17 +149,19 @@ class Artifacts(models.Model):
         blank=True, 
         null = True)
     name = models.CharField(
-        max_lenght = 100,
+        max_length = 100,
         verbose_name = "Название сета артефактов")
     dop_stat_name = models.ForeignKey(
         Dop_stat_type, 
         on_delete = models.CASCADE,
         verbose_name = "Дополнительная характеристика")
-    dop_stat = models.IntegerField(
+    dop_stat = models.DecimalField(
+        decimal_places = 2,
+        max_digits = 4,
         verbose_name = "Значение дополнительной характеристики"
     )
     description = models.CharField(
-        max_lenght = 1000,
+        max_length = 1000,
         blank = True,
         verbose_name = "Описание сета артефактов")
     def __str__(self):
@@ -173,7 +177,7 @@ class Artifacts(models.Model):
 
 class Build(models.Model):
     name = models.CharField(
-        max_lenght = 100,
+        max_length = 100,
         verbose_name = "Название сборки")
     character = models.ForeignKey(
         Сharacter,

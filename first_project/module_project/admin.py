@@ -1,5 +1,11 @@
 from django.contrib import admin
-from .models import Weapon_type, Dop_stat_type, Element, Character, Weapon, Artifacts, Build
+from .models import Weapon_type
+from .models import Dop_stat_type
+from .models import Element
+from .models import Сharacter
+from .models import Weapon
+from .models import Artifacts
+from .models import Build
 
 # Register your models here.
 @admin.register(Weapon_type)
