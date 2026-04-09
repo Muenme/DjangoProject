@@ -1,3 +1,4 @@
+from module_project import views
 """
 URL configuration for first_project project.
 
