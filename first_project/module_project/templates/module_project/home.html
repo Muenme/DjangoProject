@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Библиотека {% block title %}{% endblock %}</title>
+     {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="mb-4">Добро пожаловать в библиотеку!</h1>
+        
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card text-white bg-primary">
+                    <div class="card-body">
+                        <h5 class="card-title">Всего книг</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-white bg-success">
+                    <div class="card-body">
+                        <h5 class="card-title">Доступно</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-white bg-info">
+                    <div class="card-body">
+                        <h5 class="card-title">Авторов</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Последние добавленные книги</h2>
+        <div class="row">
+            {% for book in recent_books %}
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                    </div>
+                </div>
+            {% empty %}
+                <p>Пока нет книг в библиотеке</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<body>

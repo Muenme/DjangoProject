@@ -1,0 +1,86 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --primary-color: #ffba66; /* Основной синий цвет для кнопок, ссылок, акцентов */
+    --secondary-color: #ffcce6; /* Вторичный серый цвет для менее важных элементов */
+    --success-color: #FF8C00; /* Зеленый цвет для успешных действий, подтверждений */
+    --danger-color: #FF1493; /* Красный цвет для ошибок, опасных действий */
+    --warning-color: #FFA500; /* Желтый цвет для предупреждений, внимания */
+    --light-color: #f8f9fa; /* Светлый цвет для фонов, подсветки */
+    --dark-color: #343a40; /* Темный цвет для текста, футеров, важных элементов */
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Стандартная тень для карточек, кнопок */
+    --border-radius: 8px; /* Стандартное скругление углов для элементов интерфейса */
+
+}
+h3{
+    text-align: center;
+    color: #41073b;
+}
+body{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: black;
+    line-height: 1.1;
+    background-image: url(sakura.gif);
+    background-size:cover;
+}
+.section{
+    margin-bottom: 2rem;
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+    padding: 1.5rem;
+    background-color: rgba(255, 204, 230, 0.8);
+    border-radius: var(--border-radius);   
+    display: flex;
+    
+}
+div{
+    margin-bottom: 1rem;
+    padding: 1.5rem;
+    float: right;
+}
+header{
+    background-color: rgba(255, 186, 102, 1);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin: 0.3rem;
+    text-align: center;
+}
+
+.biography{
+    display: flex;
+    text-align: left;
+}
+
+.arc-bio{
+    display: flex;
+}
+img{
+    max-width: 20rem;
+    border-radius: var(--border-radius);
+    border: 10px solid var(--primary-color);
+    display: inline;
+}
+.bio-img{
+
+}
+ul{
+    margin-top: 1.5rem;
+}
+li{
+    margin: 1rem 0;
+}
+footer{
+    display:flex;
+    padding: 1.5rem;
+    padding-bottom: 0;
+    background-color: var(--secondary-color);
+    border-radius: 0;
+    clear: both;
+}
+.year{
+    text-align: center;
+    clear: both;
+}
