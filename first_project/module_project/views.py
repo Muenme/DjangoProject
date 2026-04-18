@@ -1,15 +1,27 @@
 from django.shortcuts import render
-from .models import *
+from .models import Weapon_type
+from .models import Dop_stat_type
+from .models import Element
+from .models import Сharacter
+from .models import Weapon
+from .models import Artifacts
+from .models import Build
+
 # Create your views here.
 def home(request):
     
+    latest_builds = Build.objects.select_related(
+        'character', 'weapon', 'artifacts'
+    ).all()[:10] 
+
     count_builds = Build.objects.count()
 
     builds = Build.objects.all()
 
     context = {
         'count_builds': count_builds,
-        'builds': builds
+        'builds': builds,
+        'latest_builds': latest_builds
     }
 
     return render(request, 'module_project/home.html', context)
