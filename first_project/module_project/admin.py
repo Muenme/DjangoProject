@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Weapon_type
 from .models import Dop_stat_type
 from .models import Element
-from .models import Сharacter
+from .models import Character
 from .models import Weapon
 from .models import Artifacts
 from .models import Build
@@ -35,10 +35,10 @@ class ElementAdmin(admin.ModelAdmin):
 
     search_fields = ['element_name']
 
-@admin.register(Сharacter)
+@admin.register(Character)
 class CharacterAdmin(admin.ModelAdmin):
 
-    list_display = ['сharacter_image', 'name', 'type_weapon', 'element', 'health', 'attack_power', 'protection', 'mastery_elements', 'description']
+    list_display = ['character_image', 'name', 'type_weapon', 'element', 'health', 'attack_power', 'protection', 'mastery_elements', 'description']
 
     search_fields = ['name', 'type_weapon', 'element', 'health', 'attack_power', 'protection', 'mastery_elements', 'description']
 

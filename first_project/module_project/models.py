@@ -54,12 +54,12 @@ class Element(models.Model):
         verbose_name = "Элемент"  # Название в единственном числе
         verbose_name_plural = "Элементы"  # Название во множественном числе 
 
-class Сharacter(models.Model):
+class Character(models.Model):
     """
     Модель для хранения персонажа.
     """
     # Изображение
-    сharacter_image = models.ImageField(
+    character_image = models.ImageField(
         upload_to='character_image/',  # Папка для загрузки файлов
         verbose_name="Изображение персонажа", 
         blank=True, 
@@ -180,7 +180,7 @@ class Build(models.Model):
         max_length = 100,
         verbose_name = "Название сборки")
     character = models.ForeignKey(
-        Сharacter,
+        Character,
         on_delete = models.CASCADE,
         verbose_name = "Персонаж")
     weapon = models.ForeignKey(

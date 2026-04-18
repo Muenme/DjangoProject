@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Weapon_type
 from .models import Dop_stat_type
 from .models import Element
-from .models import Сharacter
+from .models import Character
 from .models import Weapon
 from .models import Artifacts
 from .models import Build

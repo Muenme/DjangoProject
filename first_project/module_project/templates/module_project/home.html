@@ -3,57 +3,45 @@
 
 {% block title %}Последние сборки — Genshin Builds{% endblock %}
 
+{% block extra_js %}
+    <script src="{% static 'js/scroll.js' %}"></script>
+{% endblock %}
+
 {% block content %}
-<div class="container py-12">
+<div class="container">
 
-    <h1 class="main-title">Последние сборки</h1>
-    <p class="subtitle">От сообщества Genshin Impact</p>
+    <h1 class="main-title">Последние сборки персонажей</h1>
+    <p class="subtitle">Свежие билды от сообщества</p>
 
-    <!-- Горизонтальный скролл -->
-    <div class="relative mt-10 mb-16">
-        <div class="builds-scroll" id="builds-scroll">
+    <div class="scroll-section">
+        <button class="scroll-btn scroll-btn-left" id="scroll-left">‹</button>
+        
+        <div class="builds-scroll">
             {% for build in latest_builds %}
             <div class="build-card">
                 <div class="card-image">
-                    {% if build.character.icon %}
-                        <img src="{{ build.character.icon.url }}" alt="{{ build.character.name }}">
+                    {% if build.character.character_image %}
+                        <img src="{{ build.character.character_image.url }}" alt="{{ build.character.name }}">
                     {% endif %}
                     <div class="card-character">{{ build.character.name }}</div>
                 </div>
                 <div class="card-content">
-                    <h3 class="card-title">{{ build.title }}</h3>
-                    <div class="card-author">
-                        {% if build.author %}
-                            @{{ build.author.username }}
-                        {% else %}
-                            Аноним
-                        {% endif %}
-                    </div>
-                    <div class="card-footer">
-                        <div class="likes">❤️ {{ build.likes }}</div>
-                        <div>{{ build.created_at|timesince }} назад</div>
-                    </div>
+                    <h3 class="card-title">{{ build.name }}</h3>
                 </div>
             </div>
             {% endfor %}
         </div>
 
-        <div class="scroll-fade-left"></div>
-        <div class="scroll-fade-right"></div>
+        <button class="scroll-btn scroll-btn-right" id="scroll-right">›</button>
     </div>
 
-    <!-- Статистика -->
     <div class="stats-block">
-        <p class="stats-number">{{ total_builds }}</p>
-        <p class="stats-text">сборок в базе данных</p>
+        <p class="stats-text">Всего сборок в базе </p>        
+        <p class="stats-number">{{ count_builds }}</p>
     </div>
 
-    <!-- Кнопка -->
     <div class="text-center">
-        <a class="btn-add">
-            <span>➕</span>
-            <span>Добавить свою сборку</span>
-        </a>
+        <a class="btn-add">+ Добавить свою сборку</a>
     </div>
 
 </div>
