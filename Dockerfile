@@ -9,3 +9,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
+
+RUN python first_project/manage.py collectstatic --noinput --clear
+
+CMD ["gunicorn", "--bind", "0.0.0.0:8001", "first_project.wsgi:application"]
