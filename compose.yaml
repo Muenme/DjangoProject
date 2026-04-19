@@ -8,8 +8,8 @@ services:
       - .:/app
       - static_volume:/app/staticfiles
       - media_volume:/app/media
-    ports:
-      - "8001:8000"
+    expose:
+      - "8000"
     restart: unless-stopped
 
   nginx:
