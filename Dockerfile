@@ -2,6 +2,7 @@ FROM python:3.12-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
+ENV PYTHONPATH=.
 
 WORKDIR /app
 
@@ -10,6 +11,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-RUN python first_project/manage.py collectstatic --noinput --clear
+RUN python manage.py collectstatic --noinput --clear
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8001", "first_project.wsgi:application"]
+CMD ["gunicorn", "--pythonpath", ".", "first_project.wsgi:application", "--bind", "0.0.0.0:8000"]
