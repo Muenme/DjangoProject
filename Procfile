@@ -1,1 +1,0 @@
-web: gunicorn --pythonpath . first_project.wsgi:application --bind 0.0.0.0:$PORT
