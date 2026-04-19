@@ -30,7 +30,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://127.0.0.1:8000']
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost',
+    'http://127.0.0.1',
+    'https://*.railway.app',
+    'https://*.up.railway.app',
+]
 # Application definition
 
 INSTALLED_APPS = [
