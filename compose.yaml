@@ -1,31 +1,9 @@
 services:
   web:
     build: .
-    restart: always
-    command: >
-      sh -c "python manage.py migrate &&
-             python manage.py collectstatic --noinput &&
-             gunicorn --pythonpath . first_project.wsgi:application --bind 0.0.0.0:8000"
+    command: gunicorn --pythonpath . first_project.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - .:/app
-      - static_volume:/app/staticfiles
-      - media_volume:/app/media
-    env_file: .env
     ports:
       - "8000:8000"
-
-  nginx:
-    image: nginx:alpine
-    restart: always
-    ports:
-      - "80:80"
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
-      - static_volume:/app/staticfiles:ro
-      - media_volume:/app/media:ro
-    depends_on:
-      - web
-
-volumes:
-  static_volume:
-  media_volume:
+    restart: unless-stopped
