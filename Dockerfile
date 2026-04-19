@@ -2,8 +2,8 @@ FROM python:3.12-slim
 
 # Устанавливаем Nginx и Supervisor
 RUN apt-get update && apt-get install -y nginx supervisor \
-    && rm -rf /var/lib/apt/lists/*
-
+    && rm -rf /var/lib/apt/lists/*\
+    && ln -s /usr/sbin/nginx /usr/bin/nginx
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONPATH=.
