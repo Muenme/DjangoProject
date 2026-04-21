@@ -100,4 +100,44 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+
+        const scroll = document.querySelector('.builds-scroll');
+    const btnLeft = document.getElementById('scroll-left');
+    const btnRight = document.getElementById('scroll-right');
+
+    if (!scroll || !btnLeft || !btnRight) return;
+
+    // Ширина одной карточки + gap
+    function getCardWidth() {
+        const card = scroll.querySelector('.build-card');
+        if (!card) return 300;
+        const style = window.getComputedStyle(scroll);
+        const gap = parseFloat(style.gap) || 24;
+        return card.offsetWidth + gap;
+    }
+
+    // Листаем вправо
+    btnRight.addEventListener('click', () => {
+        const cardWidth = getCardWidth();
+        const maxScroll = scroll.scrollWidth - scroll.clientWidth;
+
+        if (scroll.scrollLeft >= maxScroll - 5) {
+            // Дошли до конца — возвращаемся в начало (цикл)
+            scroll.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+            scroll.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        }
+    });
+
+    // Листаем влево
+    btnLeft.addEventListener('click', () => {
+        const cardWidth = getCardWidth();
+
+        if (scroll.scrollLeft <= 5) {
+            // Дошли до начала — переходим в конец (цикл)
+            scroll.scrollTo({ left: scroll.scrollWidth, behavior: 'smooth' });
+        } else {
+            scroll.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+        }
+    });
 });
