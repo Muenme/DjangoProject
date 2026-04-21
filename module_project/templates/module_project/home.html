@@ -18,7 +18,7 @@
         
         <div class="builds-scroll">
             {% for build in latest_builds %}
-            <div class="build-card">
+            <a href="{% url 'build_detail' build.pk %}" class="build-card">
                 <div class="card-image">
                     {% if build.character.character_image %}
                         <img src="{{ build.character.character_image.url }}" alt="{{ build.character.name }}">
@@ -28,7 +28,7 @@
                 <div class="card-content">
                     <h3 class="card-title">{{ build.name }}</h3>
                 </div>
-            </div>
+            </a>
             {% endfor %}
         </div>
 

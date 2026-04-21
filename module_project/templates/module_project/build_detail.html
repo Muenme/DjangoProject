@@ -1,0 +1,58 @@
+{% extends 'module_project/base.html' %}
+{% load static %}
+
+{% block title %}{{ build.name }} — Genshin Builds{% endblock %}
+
+{% block content %}
+<div class="detail-container">
+
+    <a href="{% url 'home' %}" class="back-button">← Назад к сборкам</a>
+
+    <h1 class="build-title">{{ build.name }}</h1>
+
+    <div class="detail-card">
+        <h2>Персонаж</h2>
+        <div class="character-info">
+            {% if build.character.character_image %}
+                <img src="{{ build.character.character_image.url }}" alt="{{ build.character.name }}">
+            {% endif %}
+            <div>
+                <h3>{{ build.character.name }}</h3>
+                <p><strong>Элемент:</strong> {{ build.character.element.element_name }}</p>
+                <p><strong>Оружие:</strong> {{ build.character.type_weapon.weapon_type_name }}</p>
+                <p><strong>Здоровье:</strong> {{ build.character.health }}</p>
+                <p><strong>Сила атаки:</strong> {{ build.character.attack_power }}</p>
+                <p><strong>Защита:</strong> {{ build.character.protection }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="detail-card">
+        <h2>Оружие</h2>
+        <div class="item-info">
+            {% if build.weapon.weapon_image %}
+                <img src="{{ build.weapon.weapon_image.url }}" alt="{{ build.weapon.name }}">
+            {% endif %}
+            <div>
+                <h3>{{ build.weapon.name }}</h3>
+                <p><strong>Тип:</strong> {{ build.weapon.type_weapon.weapon_type_name }}</p>
+                <p><strong>{{ build.weapon.dop_stat_name.dop_stat_name }}:</strong> {{ build.weapon.dop_stat }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="detail-card">
+        <h2>Артефакты</h2>
+        <div class="item-info">
+            {% if build.artifacts.artifacts_image %}
+                <img src="{{ build.artifacts.artifacts_image.url }}" alt="{{ build.artifacts.name }}">
+            {% endif %}
+            <div>
+                <h3>{{ build.artifacts.name }}</h3>
+                <p><strong>{{ build.artifacts.dop_stat_name.dop_stat_name }}:</strong> {{ build.artifacts.dop_stat }}</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Weapon_type
 from .models import Dop_stat_type
 from .models import Element
@@ -25,3 +25,11 @@ def home(request):
     }
 
     return render(request, 'module_project/home.html', context)
+
+def build_detail(request, pk):
+    build = get_object_or_404(Build, pk=pk) 
+    
+    context = {
+        'build': build,
+    }
+    return render(request, 'module_project/build_detail.html', context)
