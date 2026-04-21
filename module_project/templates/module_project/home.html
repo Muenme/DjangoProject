@@ -23,7 +23,7 @@
                     {% if build.character.character_image %}
                         <img src="{{ build.character.character_image.url }}" alt="{{ build.character.name }}">
                     {% endif %}
-                    <div class="card-character">{{ build.character.name }}</div>
+                    <div class="build-stats">{{ build.character.name }}</div>
                 </div>
                 <div class="card-content">
                     <h3 class="card-title">{{ build.name }}</h3>
@@ -35,7 +35,7 @@
         <button class="scroll-btn scroll-btn-right" id="scroll-right">›</button>
     </div>
 
-    <div class="stats-block">
+    <div class="stat-badge">
         <p class="stats-text">Всего сборок в базе </p>        
         <p class="stats-number">{{ count_builds }}</p>
     </div>
