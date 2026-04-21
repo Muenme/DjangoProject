@@ -1,0 +1,108 @@
+{% extends 'module_project/base.html' %}
+{% load static %}
+
+{% block title %}Редактировать — {{ build.name }}{% endblock %}
+
+{% block content %}
+<div class="create-container">
+
+    <div class="form-area">
+        <a href="{% url 'build_detail' build.pk %}" class="back-button">← Назад</a>
+        <h1>Редактировать сборку</h1>
+
+        <form id="buildForm" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="character" id="character_id" value="{{ build.character.id }}">
+            <input type="hidden" name="weapon" id="weapon_id" value="{{ build.weapon.id }}">
+            <input type="hidden" name="artifacts" id="artifacts_id" value="{{ build.artifacts.id }}">
+
+            <label>Название сборки:</label>
+            <input type="text" name="name" value="{{ build.name }}"
+                   style="width:100%; padding:12px; margin:10px 0 20px;
+                          border-radius:10px; background:#1e2937; color:white; border:none;">
+
+            <!-- Текущие значения -->
+            <div class="drop-zone active-zone" id="drop-character" data-accepted-type="character">
+                <strong>Персонаж</strong>
+                <div id="character-name">
+                    <strong>{{ build.character.name }}</strong>
+                </div>
+            </div>
+
+            <div class="drop-zone active-zone" id="drop-weapon" data-accepted-type="weapon">
+                <strong>Оружие</strong>
+                <div id="weapon-name">
+                    <strong>{{ build.weapon.name }}</strong>
+                </div>
+            </div>
+
+            <div class="drop-zone active-zone" id="drop-artifacts" data-accepted-type="artifacts">
+                <strong>Артефакты</strong>
+                <div id="artifacts-name">
+                    <strong>{{ build.artifacts.name }}</strong>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Сохранить изменения</button>
+        </form>
+    </div>
+
+    <!-- Боковая панель такая же как в создании -->
+    <div class="sidebar">
+        <div class="tabs">
+            <div class="tab active" data-tab="0">Персонажи</div>
+            <div class="tab" data-tab="1">Оружие</div>
+            <div class="tab" data-tab="2">Артефакты</div>
+        </div>
+
+        <div id="element-filter" class="element-filter visible">
+            <button class="filter-btn active" data-element="all">Все</button>
+            {% for element in elements %}
+                <button class="filter-btn" data-element="{{ element.id }}">
+                    {{ element.element_name }}
+                </button>
+            {% endfor %}
+        </div>
+
+        <div id="tab0" class="tab-content active">
+            <div class="scroll-container">
+                {% for char in characters %}
+                <div class="drag-item character-item"
+                     draggable="true"
+                     data-id="{{ char.id }}"
+                     data-type="character"
+                     data-element="{{ char.element.id }}">
+                    {{ char.name }}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div id="tab1" class="tab-content">
+            <div class="scroll-container">
+                {% for weapon in weapons %}
+                <div class="drag-item"
+                     draggable="true"
+                     data-id="{{ weapon.id }}"
+                     data-type="weapon">
+                    {{ weapon.name }}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div id="tab2" class="tab-content">
+            <div class="scroll-container">
+                {% for art in artifacts %}
+                <div class="drag-item"
+                     draggable="true"
+                     data-id="{{ art.id }}"
+                     data-type="artifacts">
+                    {{ art.name }}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

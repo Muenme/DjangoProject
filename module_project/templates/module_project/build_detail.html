@@ -54,5 +54,9 @@
         </div>
     </div>
 
+        <div class="detail-actions">
+        <a href="{% url 'build_edit' build.pk %}" class="btn-edit">Редактировать</a>
+        <a href="{% url 'build_delete' build.pk %}" class="btn-delete">Удалить</a>
+    </div>
 </div>
 {% endblock %}

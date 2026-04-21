@@ -269,12 +269,83 @@ body {
     margin-bottom: 12px;
 }
 
+.detail-card{
+    text-align:center;
+}
 .detail-card strong {
     color: #c4d0ff;
 }
 
+/* Кнопки управления на детальной странице */
+.detail-actions {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
 
+.btn-edit {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #4f46e5);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+}
 
+.btn-edit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.4);
+}
+
+.btn-delete {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #e54f46);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.btn-delete:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(239, 68, 68, 0.4);
+}
+
+/* Зона с уже выбранным значением */
+.active-zone {
+    border-color: #22c55e;
+    background-color: rgba(34, 197, 94, 0.1);
+}
+
+#delete-h2{
+    color:#e54f46; 
+    margin-bottom:20px;
+}
+#delete-p1{
+    font-size:1.2rem; 
+    margin-bottom:10px;
+}
+#delete-p2{
+    color:#9ca3af; 
+    margin-bottom:30px;
+}
+#delete-div{
+    display:flex; 
+    gap:20px; 
+    justify-content:center;
+}
 
 
 /*Создание своей записи*/

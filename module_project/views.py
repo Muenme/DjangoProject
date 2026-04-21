@@ -34,6 +34,45 @@ def build_detail(request, pk):
     }
     return render(request, 'module_project/build_detail.html', context)
 
+def build_edit(request, pk):
+    build = get_object_or_404(Build, pk=pk)
+
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        character_id = request.POST.get('character')
+        weapon_id = request.POST.get('weapon')
+        artifacts_id = request.POST.get('artifacts')
+
+        if name and character_id and weapon_id and artifacts_id:
+            build.name = name
+            build.character_id = character_id
+            build.weapon_id = weapon_id
+            build.artifacts_id = artifacts_id
+            build.save()
+            messages.success(request, 'Сборка успешно обновлена!')
+            return redirect('build_detail', pk=build.pk)
+        else:
+            messages.error(request, 'Заполните все поля')
+
+    context = {
+        'build': build,
+        'characters': Character.objects.all(),
+        'weapons': Weapon.objects.all(),
+        'artifacts': Artifacts.objects.all(),
+        'elements': Element.objects.all(),
+    }
+    return render(request, 'module_project/build_edit.html', context)
+
+def build_delete(request, pk):
+    build = get_object_or_404(Build, pk=pk)
+
+    if request.method == 'POST':
+        build.delete()
+        messages.success(request, 'Сборка удалена!')
+        return redirect('home')
+
+    return render(request, 'module_project/build_confirm_delete.html', {'build': build})
+
 def build_create(request):
     if request.method == 'POST':
         name = request.POST.get('name')

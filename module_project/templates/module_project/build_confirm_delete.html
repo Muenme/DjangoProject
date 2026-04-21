@@ -1,0 +1,23 @@
+{% extends 'module_project/base.html' %}
+
+{% block title %}Удалить — {{ build.name }}{% endblock %}
+
+{% block content %}
+<div class="detail-container">
+
+    <div class="detail-card">
+        <h2 id="delete-h2">Удалить сборку?</h2>
+        <p id="delete-p1">Ты точно хочешь удалить сборку <strong>«{{ build.name }}»</strong>?</p>
+        <p id="delete-p2">Это действие нельзя отменить.</p>
+
+        <div id="delete-div">
+            <form method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn-delete">Да, удалить</button>
+            </form>
+            <a href="{% url 'build_detail' build.pk %}" class="btn-edit">Отмена</a>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
