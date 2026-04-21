@@ -98,7 +98,6 @@ body {
     font-size: 3.2rem;
     font-weight: 800;
     color: var(--accent);
-    margin: 10px 0 5px;
     line-height: 1;
 }
 
@@ -107,7 +106,7 @@ body {
     color: #cbd5e1;
 }
 
-.btn-add-build {
+.btn-add {
     background: linear-gradient(135deg, #7c3aed, #c026d3);
     color: white;
     padding: 18px 40px;
@@ -123,7 +122,7 @@ body {
     text-align: center;
 }
 
-.btn-add-build:hover {
+.btn-add:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 35px rgba(124, 58, 237, 0.5);
 }
