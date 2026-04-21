@@ -17,9 +17,7 @@
             <input type="hidden" name="artifacts" id="artifacts_id" value="{{ build.artifacts.id }}">
 
             <label>Название сборки:</label>
-            <input type="text" name="name" value="{{ build.name }}"
-                   style="width:100%; padding:12px; margin:10px 0 20px;
-                          border-radius:10px; background:#1e2937; color:white; border:none;">
+            <input type="text" name="name" id="edit-text-name" value="{{ build.name }}">
 
             <!-- Текущие значения -->
             <div class="drop-zone active-zone" id="drop-character" data-accepted-type="character">

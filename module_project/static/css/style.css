@@ -347,6 +347,15 @@ body {
     justify-content:center;
 }
 
+#edit-text-name{
+    width: 97%; 
+    padding:12px; 
+    margin:10px 0 20px;
+    border-radius:10px; 
+    background:#1e2937; 
+    color:white; 
+    border:none;
+}
 
 /*Создание своей записи*/
 .create-container { display: flex; gap: 25px; max-width: 1400px; margin: 0 auto; padding: 20px; }
