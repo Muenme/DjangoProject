@@ -1,0 +1,117 @@
+{% extends 'module_project/base.html' %}
+{% load static %}
+
+{% block title %}Создать свою сборку{% endblock %}
+
+{% block content %}
+<div class="create-container">
+
+    <div class="form-area">
+        <h1>Создать свою сборку</h1>
+
+        <form id="buildForm" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="character" id="character_id">
+            <input type="hidden" name="weapon" id="weapon_id">
+            <input type="hidden" name="artifacts" id="artifacts_id">
+
+            <label>Название сборки:</label>
+            <input type="text" name="name" id="text-name">
+
+            <div class="drop-zone" id="drop-character" data-accepted-type="character">
+                <strong>Персонаж</strong>
+                <div id="character-name"></div>
+            </div>
+
+            <div class="drop-zone" id="drop-weapon" data-accepted-type="weapon">
+                <strong>Оружие</strong>
+                <div id="weapon-name"></div>
+            </div>
+
+            <div class="drop-zone" id="drop-artifacts" data-accepted-type="artifacts">
+                <strong>Артефакты</strong>
+                <div id="artifacts-name"></div>
+            </div>
+
+            <button type="submit" class="submit-btn">Создать сборку</button>
+        </form>
+    </div>
+
+    <div class="sidebar">
+
+        <!-- Вкладки — добавлен data-tab к каждой! -->
+        <div class="tabs">
+            <div class="tab active" data-tab="0">Персонажи</div>
+            <div class="tab" data-tab="1">Оружие</div>
+            <div class="tab" data-tab="2">Артефакты</div>
+        </div>
+
+        <!-- Фильтр — виден по умолчанию (первая вкладка активна) -->
+        <div id="element-filter" class="element-filter visible">
+            <button class="filter-btn active" data-element="all">Все</button>
+            {% for element in elements %}
+                <button class="filter-btn" data-element="{{ element.id }}">
+                    {{ element.element_name }}
+                </button>
+            {% empty %}
+                <p>Элементы не найдены</p>
+            {% endfor %}
+        </div>
+
+        <!-- Вкладка Персонажи — класс active здесь! -->
+        <div id="tab0" class="tab-content active">
+            <div class="scroll-container">
+                {% for char in characters %}
+                <!-- Добавлен класс character-item и data-element -->
+                <div class="drag-item character-item"
+                     draggable="true"
+                     data-id="{{ char.id }}"
+                     data-type="character"
+                     data-element="{{ char.element.id }}">
+                    {{ char.name }}
+                </div>
+                {% empty %}
+                    <p style="color:#9ca3af;">Персонажи не найдены</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Вкладка Оружие -->
+        <div id="tab1" class="tab-content">
+            <div class="scroll-container">
+                {% for weapon in weapons %}
+                <div class="drag-item"
+                     draggable="true"
+                     data-id="{{ weapon.id }}"
+                     data-type="weapon">
+                    {{ weapon.name }}
+                </div>
+                {% empty %}
+                    <p style="color:#9ca3af;">Оружие не найдено</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Вкладка Артефакты -->
+        <div id="tab2" class="tab-content">
+            <div class="scroll-container">
+                {% for art in artifacts %}
+                <div class="drag-item"
+                     draggable="true"
+                     data-id="{{ art.id }}"
+                     data-type="artifacts">
+                    {{ art.name }}
+                </div>
+                {% empty %}
+                    <p style="color:#9ca3af;">Артефакты не найдены</p>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'js/js.js' %}" defer></script>
+{% endblock %}

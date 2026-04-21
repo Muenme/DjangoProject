@@ -7,13 +7,17 @@
     <title>{% block title %}Genshin Builds{% endblock %}</title>
     
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     
-    {% block extra_css %}{% endblock %}
+    
+    {% block extra_css %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% endblock %}
 </head>
 <body>
     {% block content %}{% endblock %}
 
-    {% block extra_js %}{% endblock %}
+    {% block extra_js %}
+        <script src="{% static 'js/js.js' %}"></script>
+    {% endblock %}
 </body>
 </html>

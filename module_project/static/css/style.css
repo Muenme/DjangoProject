@@ -263,3 +263,111 @@ body {
 .detail-card strong {
     color: #c4d0ff;
 }
+
+
+
+
+
+/*Создание своей записи*/
+.create-container { display: flex; gap: 25px; max-width: 1400px; margin: 0 auto; padding: 20px; }
+.form-area { flex: 7; }
+.sidebar { flex: 3; background: rgba(15, 23, 42, 0.9); border-radius: 20px; padding: 20px; }
+#text-name{
+    width:97%; 
+    padding:12px; 
+    margin:10px 0 20px; 
+    border-radius:10px; 
+    background:#1e2937; 
+    color:white; border:none;
+}
+.drop-zone {
+    border: 3px dashed #64748b;
+    border-radius: 16px;
+    min-height: 160px;
+    padding: 15px;
+    margin-bottom: 20px;
+    transition: all 0.3s;
+    background: rgba(0,0,0,0.2);
+}
+.drop-zone.over { border-color: #a78bfa; background: rgba(167, 139, 250, 0.1); }
+
+.drag-item {
+    background: #1e2937;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 10px;
+    cursor: grab;
+    user-select: none;
+    border: 1px solid #334155;
+}
+.drag-item:active { cursor: grabbing; }
+
+.tabs { display: flex; gap: 10px; margin-bottom: 15px; }
+.tab { padding: 10px 20px; background: #1e2937; border-radius: 10px; cursor: pointer; }
+.tab.active { background: #a78bfa; color: black; font-weight: bold; }
+
+.scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    padding: 10px 0;
+    scrollbar-width: none;
+}
+.scroll-container::-webkit-scrollbar { display: none; }
+
+.submit-btn {
+    background: linear-gradient(90deg, #7c3aed, #db2777);
+    color: white;
+    padding: 16px 40px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 50px;
+    width: 100%;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.filter-btn {
+    padding: 6px 14px;
+    background: #1e2937;
+    color: #cbd5e1;
+    border: 1px solid #334155;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    border-color: #a78bfa;
+    color: #a78bfa;
+}
+
+.filter-btn.active {
+    background: #a78bfa;
+    color: black;
+    border-color: #a78bfa;
+    font-weight: bold;
+}
+/* Скрываем все вкладки */
+.tab-content {
+    display: none;
+}
+
+/* Показываем только активную */
+.tab-content.active {
+    display: block;
+}
+
+/* Фильтр скрыт по умолчанию */
+#element-filter {
+    display: none;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+/* Показываем фильтр только когда visible */
+#element-filter.visible {
+    display: flex;
+}
