@@ -401,6 +401,7 @@ body {
     gap: 12px;
     padding: 10px 0;
     scrollbar-width: none;
+    flex-wrap: wrap;
 }
 .scroll-container::-webkit-scrollbar { display: none; }
 
